@@ -21,6 +21,24 @@ public class hellowcontroller {
         return Example_View;
     }
 
+    //Enviar datos forma 1
+    @GetMapping("/exampleMAV")
+    public ModelAndView exampleMAV(){
+        ModelAndView mv = new ModelAndView(Example_View);
+        mv.addObject("name", "ALex");
+        mv.addObject("titulo", "prueba yanne");
+        return mv;
+
+    }
+
+    //Enviar datos forma 2
+    @GetMapping("/exampleMV")
+    public String exampleS(Model model, Model titulo){
+        model.addAttribute("name", "alex 2");
+        titulo.addAttribute("titulo", "pruebas yanne 2");
+        return Example_View;
+    }
+
 
 
 }
