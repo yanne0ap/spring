@@ -39,6 +39,34 @@ public class hellowcontroller {
         return Example_View;
     }
 
+    //Enviar datos forma super
+    @GetMapping("/example3a")
+    public ModelAndView example3a(){
+        ModelAndView mv = new ModelAndView(Example_View);
+        mv.addObject("people", getPeople());
+        return mv;
 
+    }
+
+    //Enviar datos forma super 2
+    @GetMapping("/example3b")
+    public String example3b(Model model){
+        model.addAttribute("people", getPeople());
+        return Example_View;
+    }
+
+    //listas
+    private List<Person> getPeople(){
+        List<Person> people = new ArrayList<>();
+        people.add(new Person("Luis", 20, "quimico"));
+        people.add(new Person("leonar", 21, "fisico"));
+        people.add(new Person("Donathelo", 22, "Pintor"));
+        people.add(new Person("Atena", 23, "Guerrera"));
+        people.add(new Person("Naruto", 24, "Hokage"));
+        people.add(new Person("Kakashi", 25, "Anbu"));
+        people.add(new Person("Irika", 26, "Sensei"));
+        return people;
+
+    }
 
 }
