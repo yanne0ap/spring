@@ -16,6 +16,11 @@ public class Example3Controller {
     public static final String FORM_VIEW = "form";
     public  static final String RESULT_VIEW = "result";
 
+    @GetMapping("/")
+    public String redirect(){
+        return "redirect:/example3/showform";
+    }
+
     @GetMapping("/showform")
     public String showform(Model model){
         model.addAttribute("person", new Person());
