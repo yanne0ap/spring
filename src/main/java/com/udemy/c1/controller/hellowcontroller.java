@@ -2,6 +2,7 @@ package com.udemy.c1.controller;
 
 import com.udemy.c1.component.ExampleComponent;
 import com.udemy.c1.model.Person;
+import com.udemy.c1.service.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,10 @@ import java.util.List;
 public class hellowcontroller {
 
     public static final String Example_View = "hellow";
+
+    @Autowired
+    @Qualifier("exampleService")
+    private ExampleService exampleService;
 
     @Autowired
     @Qualifier("exampleComponent")
@@ -50,7 +55,7 @@ public class hellowcontroller {
     @GetMapping("/example3a")
     public ModelAndView example3a(){
         ModelAndView mv = new ModelAndView(Example_View);
-        mv.addObject("people", getPeople());
+        mv.addObject("people", exampleService.getListPeople());
         return mv;
 
     }
@@ -59,22 +64,10 @@ public class hellowcontroller {
     @GetMapping("/example3b")
     public String example3b(Model model){
         exampleComponent.sayHello();
-        model.addAttribute("people", getPeople());
+        model.addAttribute("people", exampleService.getListPeople());
         return Example_View;
     }
 
-    //listas
-    private List<Person> getPeople(){
-        List<Person> people = new ArrayList<>();
-        people.add(new Person("Luis", 20, "quimico"));
-        people.add(new Person("leonar", 21, "fisico"));
-        people.add(new Person("Donathelo", 22, "Pintor"));
-        people.add(new Person("Atena", 23, "Guerrera"));
-        people.add(new Person("Naruto", 24, "Hokage"));
-        people.add(new Person("Kakashi", 25, "Anbu"));
-        people.add(new Person("Irika", 26, "Sensei"));
-        return people;
 
-    }
 
 }
