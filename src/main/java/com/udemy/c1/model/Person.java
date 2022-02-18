@@ -2,8 +2,9 @@ package com.udemy.c1.model;
 
 public class Person {
     private String name;
-    private String Profe;
+    private String profe;
     private int age;
+
 
     public String getName(){
         return name;
@@ -18,17 +19,21 @@ public class Person {
     public void setAge(int age){
         this.age = age;
     }
+
+
     public String getProf(){
-        return Profe;
+        return profe;
     }
     public void setProf(String Profe){
-        this.name = Profe;
+        this.profe = Profe;
     }
     public Person(String name, int age, String Profe){
         super();
         this.age = age;
         this.name = name;
-        this.Profe = Profe;
+        this.profe = Profe;
     }
+
+    public Person(){}
 
 }
