@@ -1,6 +1,9 @@
 package com.udemy.c1.controller;
 
+import com.udemy.c1.component.ExampleComponent;
 import com.udemy.c1.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +19,13 @@ public class hellowcontroller {
 
     public static final String Example_View = "hellow";
 
+    @Autowired
+    @Qualifier("exampleComponent")
+    private ExampleComponent exampleComponent;
+
     @GetMapping("/hello")
     public String hello(){
-        return Example_View;
+        return "login";
     }
 
     //Enviar datos forma 1
@@ -51,6 +58,7 @@ public class hellowcontroller {
     //Enviar datos forma super 2
     @GetMapping("/example3b")
     public String example3b(Model model){
+        exampleComponent.sayHello();
         model.addAttribute("people", getPeople());
         return Example_View;
     }
