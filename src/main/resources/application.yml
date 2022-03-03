@@ -1,14 +1,18 @@
+server:
+  port: 8090
 spring:
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521:xe
+    url: jdbc:oracle:thin:@localhost:1521:ORCLCDB
     username: curso
     password: admin123
 
-    jpa:
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      show-sq: true
+    properties:
       hibernate:
-        ddl-auto: update
-        show-sq: true
-        properties:
-          hibernate:
-            format_sql: true
-            dialect: org.hibernate.dialect.Oracle10gDialect
+        format_sql: true
+        dialect: org.hibernate.dialect.Oracle10gDialect
+
