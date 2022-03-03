@@ -26,8 +26,12 @@
 </table>
 
 
-<form action="#" th:action="@{/}">
-  <input type="text">
+<form action="#" th:action="@{/courses/addcourse}" th:object="${courses}" method="post">
+  <input type="text" th:field="*{name}">
+  <input type="text" th:field="*{description}">
+  <input type="number" th:field="*{price}">
+  <input type="number" th:field="*{hours}">
+  <input type="submit" value="Guardar">
 </form>
 </body>
 </html>

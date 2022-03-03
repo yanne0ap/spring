@@ -30,6 +30,7 @@ public class CourseController {
     public ModelAndView ListAllCourses() {
         LOG.info("Call: " + "ListAllCourses()");
         ModelAndView mva = new ModelAndView(COURSE_VIEW);
+        mva.addObject("courses", new Course());
         mva.addObject("Course", courseService.ListAllCourses());
         return mva;
     }
@@ -38,7 +39,7 @@ public class CourseController {
     public String addCourse(@ModelAttribute("course") Course course) {
         LOG.info("Call: " + "addCourse()"+" -- Param: "+ course.toString());
         courseService.addCourse(course);
-        return "redirect:/course/listcourses";
+        return "redirect:/courses/listcourses";
     }
 
 }
