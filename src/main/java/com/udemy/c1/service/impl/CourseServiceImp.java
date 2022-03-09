@@ -27,15 +27,22 @@ public class CourseServiceImp implements CourseService {
     }
 
     @Override
+    public Course findCustomerById(int id) {
+        return courseJpaRepository.findById(id);
+    }
+
+    @Override
     public Course addCourse(Course course) {
         LOG.info("Call: "+ "addCourse()");
         return courseJpaRepository.save(course);
     }
 
     @Override
-    public int removeCourse(Course course) {
-        courseJpaRepository.delete(course);
-        return 0;
+    public void removeCourse(int id) {
+        Course course = courseJpaRepository.findById(id);
+        if(course !=null){
+            courseJpaRepository.delete(course);
+        }
     }
 
     @Override

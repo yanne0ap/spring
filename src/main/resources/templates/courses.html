@@ -12,21 +12,34 @@
       <th>Description</th>
       <th>Price</th>
       <th>Hours</th>
+      <th>Opciones</th>
     </tr>
   </thead>
   <tbody>
-  <tr th:each="course : ${Course}">
+  <tr th:each="course : ${courses}">
     <th><span th:text="${course.name}"></span></th>
     <th><span th:text="${course.description}"></span></th>
     <th><span th:text="${course.price}"></span></th>
     <th><span th:text="${course.hours}"></span></th>
+    <th>
+      <a href="#" th:href="@{/courses/edit/__${course.id}__}">
+        editar
+      </a>
+
+      <a href="#" th:href="@{/courses/delatecourse/__${course.id}__}">
+        eliminar
+      </a>
+
+    </th>
+
   </tr>
 
   </tbody>
 </table>
 
 
-<form action="#" th:action="@{/courses/addcourse}" th:object="${courses}" method="post">
+<!--/*@thymesVar id="courses" type=""*/-->
+<form action="#" th:action="@{/courses/addcourse}" th:object="${Course}" method="post">
   <input type="text" th:field="*{name}">
   <input type="text" th:field="*{description}">
   <input type="number" th:field="*{price}">

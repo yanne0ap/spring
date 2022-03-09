@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="courses" type=""*/-->
+<form action="#" th:action="@{/courses/updatecourse}" th:each="course : ${course}" method="post">
+    <input type="text" th:field="*{course.name}" th:value="${course.name}">
+    <input type="text" th:field="*{course.description}" th:value="${course.description}">
+    <input type="number" th:field="*{course.price}" th:value="${course.price}">
+    <input type="number" th:field="*{course.hours}" th:value="${course.hours}">
+    <input type="hidden" th:field="*{course.id}" th:value="${course.id}">
+    <input type="submit" value="Guardar">
+</form>
+</body>
+</html>
